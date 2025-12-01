@@ -5,6 +5,7 @@ package ru.belikov.springcourse.service;
 
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.belikov.springcourse.dao.UserDao;
 import ru.belikov.springcourse.model.User;
 
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<User> getAllUsers() {
         return userDao.findAll();
     }
@@ -38,11 +40,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void deleteUser(Long id) {
         userDao.delete(id);
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
         userDao.update(user);
     }
